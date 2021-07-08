@@ -24,33 +24,43 @@ class _CalculatorState extends State<Calculator> {
 
   void equalto() {
     setState(() {
+      int inc = 0;
       for (int i = 0; i < eqn.length;i++) {
         if (eqn[i] == "+") {
           a = double.parse(eqn.substring(0,i));
           b = double.parse(eqn.substring(i+1));
           result = a + b;
+          inc = inc + 1;
           break;
         }
         if (eqn[i] == "-") {
           a = double.parse(eqn.substring(0,i));
           b = double.parse(eqn.substring(i+1));
           result = a - b;
+          inc = inc + 1;
           break;
         }
         if (eqn[i] == "*") {
           a = double.parse(eqn.substring(0,i));
           b = double.parse(eqn.substring(i+1));
           result = a * b;
+          inc = inc + 1;
           break;
         }
         if (eqn[i] == "/") {
           a = double.parse(eqn.substring(0,i));
           b = double.parse(eqn.substring(i+1));
           result = a / b;
+          inc = inc + 1;
           break;
         }
       }
+      if (inc == 1) {
       res= result.toString();
+      }
+      if (inc == 0) {
+        res = eqn;
+      }
     });
   }
 
